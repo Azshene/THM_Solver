@@ -6,7 +6,7 @@ The treasures are completely ignored, and the solver instead attempts to clear a
 I decided to make this project while I was learning Python in order to help my little brother get the platinum trophy in the game, 
 as I couldn't find any good solvers online.
 
-Prerequisites: Python 3 with the Numpy library installed. The Stats.py and Generateboard.py scripts also requires the Pandas library,                  but this is not necessary to use the solver.
+Prerequisites: Python 3 with the Numpy library installed. The Stats.py and GenerateBoard.py scripts also requires the Pandas library,                  but this is not necessary to use the solver.
 
 Step 1: Take a picture of the board, pause the game and make a CSV file describing the board using notepad or a similar program. 
         Place it in the "/boards" folder. A few example boards are already present in the folder.
