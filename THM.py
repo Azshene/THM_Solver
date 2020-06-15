@@ -1,4 +1,5 @@
 import os, shutil
+from os import path
 import sys
 import time
 import csv
@@ -437,6 +438,9 @@ def Solve(state, target, height, width, exhaustive_coords, max_states, print_out
 def output_image(solution, states, height, width):
     from PIL import Image, ImageDraw
 
+    if not os.path.exists('solutions'):
+        os.mkdir('solutions')
+
     # clear previously printed solutions
     for filename in os.listdir('solutions'):
         file_path = os.path.join('solutions', filename)
@@ -560,7 +564,7 @@ if __name__ == '__main__':
         sys.exit("Usage: python THM.py [filename] [target clearance rate in %] [maximum board state searches] [print_output]")
     filename = sys.argv[1] if len(sys.argv) > 1 else "board4"
     target = int(sys.argv[2]) if len(sys.argv) > 2 else 100
-    max_states = int(sys.argv[3]) if len(sys.argv) > 3 else 3000
+    max_states = int(sys.argv[3]) if len(sys.argv) > 3 else 5000
     print_output = int(sys.argv[4]) if len(sys.argv) > 4 else 2
 
     THM(filename, target, max_states, print_output)
