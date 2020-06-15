@@ -25,6 +25,7 @@ Step 3: Go through the solution step by step as shown in the images in the "/sol
 
 Step 4: Hopefully enjoy your platinum, this probably still requires a little bit of luck with the positioning of the treasures.
 
+
 Two additional files are included in the project:
 
 GenerateBoard.py: Generates a random initial board of a specified width and height
