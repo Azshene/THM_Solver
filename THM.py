@@ -490,11 +490,6 @@ def output_image(solution, states, height, width):
         if step > 0:
             if step != len(solution):
                 draw.rectangle(
-                    ([(solution[step - 1][1] * cell_size, solution[step - 1][0] * cell_size),
-                      ((solution[step - 1][1] + 1) * cell_size, (solution[step - 1][0] + 1) * cell_size)]),
-                    fill=None, outline = remove_highlight, width = cell_border
-                )
-                draw.rectangle(
                     ([(solution[step][1] * cell_size, solution[step][0] * cell_size),
                       ((solution[step][1] + 1) * cell_size, (solution[step][0] + 1) * cell_size)]),
                     fill=None, outline=highlight_color, width = cell_border
