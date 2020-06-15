@@ -19,7 +19,9 @@ Step 2: Execute THM.py from the command prompt using python.
                maximum board state searches = 5000
                print_output = 2 (this prints the solution as a series of images, 1 prints the solution directly into the cmd and 0 doesn't print the solution)
                
-        Example: 
+        Example:
+                Type the following into the command prompt:
+                
                 cd "D:\folder_that_contains_scripts\"
                 python THM.py board3
                 
