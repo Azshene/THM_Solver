@@ -30,9 +30,9 @@ def Heuristics(state, height, width, exhaustive_coords):
     return H
 
 def Cost(depth):
-    """The cost has been defined as the depth (positive) multiplied with 1.01 to slightly favor solutions with more steps as it is likely that these will clear more of the board """
+    """The cost has been defined as the depth (positive) multiplied with 1.00 to slightly favor solutions with more steps as it is likely that these will clear more of the board """
 
-    G = depth * 1.01
+    G = depth * 1.00
     return G
 
 class Node():
