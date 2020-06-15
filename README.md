@@ -31,7 +31,7 @@ Step 2: Execute THM.py from the command prompt using python.
                 
 Step 3: Go through the solution step by step as shown in the images in the "/solution" folder.
 
-Step 4: Hopefully enjoy your platinum, this probably still requires a little bit of luck with the positioning of the treasures.
+Step 4: Hopefully enjoy your platinum. It will probably still require a little bit of luck with the positioning of the treasures.
 
 
 Two additional files are included in the project:
