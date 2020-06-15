@@ -16,12 +16,12 @@ Step 2: Execute THM.py from the command prompt using python.
         Usage: python THM.py [filename (without extension)] [target clearance rate in %] [maximum board state searches] [print_output]
                The following default values to the optional arguments are given:
                target clearance rate = 100
-               maximum board state searches = 3000
+               maximum board state searches = 5000
                print_output = 2 (this prints the solution as a series of images, 1 prints the solution directly into the cmd and 0 doesn't print the solution)
                
         Example: 
                 cd "D:\folder_that_contains_scripts\"
-                python THM.py board3 100 3000 2
+                python THM.py board3
                 
 Step 3: Go through the solution step by step as shown in the images in the "/solution" folder.
 
