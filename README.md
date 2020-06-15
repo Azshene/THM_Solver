@@ -12,11 +12,13 @@ Step 1: Take a picture of the board, pause the game and make a CSV file describi
         Place it in the "/boards" folder. A few example boards are already present in the folder.
         
 Step 2: Execute THM.py from the command prompt using python. 
+
         Usage: python THM.py [filename (without extension)] [target clearance rate in %] [maximum board state searches] [print_output]
                The following default values to the optional arguments are given:
                target clearance rate = 100
                maximum board state searches = 3000
                print_output = 2 (this prints the solution as a series of images, 1 prints the solution directly into the cmd and 0 doesn't print the solution)
+               
         Example: 
                 cd "D:\folder\Treasure Hunter Monolith"
                 python THM.py board3 100 3000 2
