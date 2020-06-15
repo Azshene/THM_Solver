@@ -32,7 +32,7 @@ def Heuristics(state, height, width, exhaustive_coords):
 def Cost(depth):
     """The cost has been defined as the depth (positive) multiplied with 1.01 to slightly favor solutions with more steps as it is likely that these will clear more of the board """
 
-    G = depth * 1.00
+    G = depth * 1.01
     return G
 
 class Node():
@@ -546,8 +546,9 @@ def THM(filename, target, max_states, print_output):
     elif print_output == 2:
         cleared = round(cleared, 2)
         print(f"The best solution cleared {cleared}% of the board and was determined by exploring {num_explored} states, using {len(solution)} steps to be:\n {solution}")
-        print("\nThe solution can be found as a series of images in the 'solution' folder.")
+        print("\nPrinting solution...")
         output_image(solution, states, height, width)
+        print("\nThe best determined solution can be found in the 'solutions' folder")
     else:
         pass
 
