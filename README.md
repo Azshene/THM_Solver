@@ -22,7 +22,7 @@ Step 2: Execute THM.py from the command prompt using python.
         Example:
                 Type the following into the command prompt:
                 
-                cd "D:\folder_that_contains_scripts\"
+                cd "D:\path\to\scripts\folder"
                 python THM.py board3
                 
                 This will return the best solution found for board3 in the boards folder, attempting to clear 100 % of the board, 
