@@ -5,12 +5,9 @@ import time
 import csv
 import numpy as np
 from numpy import genfromtxt
-import ipdb # ipdb.set_trace()
-
-
 
 def Cleared(state, height, width):
-    """Determines how big a percentage of a given board has been cleared """
+    """Determines the percentage of a given board that has been cleared"""
     total_fields = height * width
     noncleared_fields = np.count_nonzero(state)
     cleared_fields = total_fields - noncleared_fields
@@ -25,14 +22,14 @@ def Heuristics(state, height, width, exhaustive_coords):
     H1 = np.sum(Clearable(state, height, width, exhaustive_coords))
     H2 = height * width - np.count_nonzero(state)
 
-    H = H1 * 1.00 + H2 * 1.00
+    H = H1 + H2
 
     return H
 
 def Cost(depth):
-    """The cost has been defined as the depth (positive) multiplied with 1.00 to slightly favor solutions with more steps as it is likely that these will clear more of the board """
+    """The cost has been defined as the depth (positive) to slightly favor solutions with more steps as it is likely that these will clear more of the board """
 
-    G = depth * 1.00
+    G = depth
     return G
 
 class Node():
@@ -83,7 +80,8 @@ class QueueFrontier(StackFrontier):
 class AStarFrontier(StackFrontier):
 
     def remove(self):
-        """ Pops the node with the highest value as defined by H + G"""
+        """Pops the node with the highest value as defined by H + G"""
+
         if self.empty():
             raise Exception("empty frontier")
         else:
@@ -129,6 +127,7 @@ def neighbors(action, height, width):
 
 def Exhaustive_coordinates(height, width):
     """Returns an exhaustive list of coordinates for a state of a given size"""
+
     actions = []
     for i in range(0, height):
         for j in range(0, width):
@@ -454,10 +453,8 @@ def output_image(solution, states, height, width):
 
     sprite = Image.open('sprites/1.png')
     cell_size, cell_size = sprite.size
-    cell_border = 4
     highlight_color = (197, 190, 0)
     highlight_color2 = (199, 138, 14)
-    remove_highlight = (0, 0, 0)
 
     # Create a blank canvas
     img = Image.new(
@@ -487,19 +484,25 @@ def output_image(solution, states, height, width):
                 img.paste(sprite, (cell_size*j, cell_size*i))
 
         # highlighting action
-        if step > 0:
-            if step != len(solution):
-                draw.rectangle(
+
+        if step != len(solution):
+            draw.rectangle(
                     ([(solution[step][1] * cell_size, solution[step][0] * cell_size),
                       ((solution[step][1] + 1) * cell_size, (solution[step][0] + 1) * cell_size)]),
-                    fill=None, outline=highlight_color, width = cell_border
+                    fill=None, outline=highlight_color2, width = 4
                 )
-        else:
+
             draw.rectangle(
-                ([(solution[step][1] * cell_size, solution[step][0] * cell_size),
-                  ((solution[step][1] + 1) * cell_size, (solution[step][0] + 1) * cell_size)]),
-                fill=None, outline = highlight_color, width = cell_border
-            )
+                    ([(solution[step][1] * cell_size, solution[step][0] * cell_size),
+                      ((solution[step][1] + 1) * cell_size, (solution[step][0] + 1) * cell_size)]),
+                    fill=None, outline=highlight_color, width = 3
+                )
+
+            draw.rectangle(
+                    ([(solution[step][1] * cell_size, solution[step][0] * cell_size),
+                      ((solution[step][1] + 1) * cell_size, (solution[step][0] + 1) * cell_size)]),
+                    fill=None, outline=highlight_color2, width = 1
+                )
 
         img.save("solutions/step{}.png".format(str(step)))
 
@@ -507,7 +510,18 @@ def THM(filename, target, max_states, print_output):
     """Initalizes the Treasure Hunter Monolith solver and prints the best solution found"""
 
     # read file contents and import as a matrix
-    state = genfromtxt(f'boards/{filename}.csv', delimiter=',')
+    try:
+        state = genfromtxt(f'boards/{filename}.csv', delimiter=',')
+    except ValueError:
+        sys.exit(f"Please verify that the board in {filename}.csv is square.")
+
+    # file contents error detection
+    if np.max(state) > 4:
+        sys.exit(f"Please verify that 'boards/{filename}.csv' only contains values between 0 and 4.")
+    elif np.min(state) < 0:
+        sys.exit(f"Please verify that 'boards/{filename}.csv' only contains values between 0 and 4.")
+    elif np.isnan(state).any():
+        sys.exit(f"Please verify that 'boards/{filename}.csv' only contains values between 0 and 4.")
 
     # Determine height and width of board
     try:
@@ -555,12 +569,43 @@ def THM(filename, target, max_states, print_output):
     return solution, states, num_explored, cleared, max_exceeded
 
 if __name__ == '__main__':
+
     # variable argument default values
     if len(sys.argv) > 5:
         sys.exit("Usage: python THM.py [filename] [target clearance rate in %] [maximum board state searches] [print_output]")
+
+    # input error detection
+    if len(sys.argv) > 2:
+        try:
+            int(sys.argv[2])
+        except:
+            sys.exit("Target clearance rate must be a positive integer.")
+
+    if len(sys.argv) > 3:
+        try:
+            int(sys.argv[3])
+        except:
+            sys.exit("Max search states must be a positive integer.")
+
+    if len(sys.argv) > 4:
+        try:
+            int(sys.argv[4])
+        except:
+            sys.exit("Print output must be 0, 1 or 2.")
+
     filename = sys.argv[1] if len(sys.argv) > 1 else "board4"
     target = int(sys.argv[2]) if len(sys.argv) > 2 else 100
     max_states = int(sys.argv[3]) if len(sys.argv) > 3 else 5000
     print_output = int(sys.argv[4]) if len(sys.argv) > 4 else 2
+
+    if target > 100:
+        target = 100
+        print("Target clearance rate has been set to 100 %.")
+    elif target < 0:
+        sys.exit("Target clearance rate must be between 0 and 100.")
+    if max_states < 0:
+        sys.exit("Max search states must be a positive integer.")
+    if print_output != 0 and print_output != 1 and print_output != 2:
+        sys.exit("Print output must be 0, 1 or 2.")
 
     THM(filename, target, max_states, print_output)
