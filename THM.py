@@ -570,11 +570,10 @@ def THM(filename, target, max_states, print_output):
 
 if __name__ == '__main__':
 
-    # variable argument default values
+    # input error detection
     if len(sys.argv) > 5:
         sys.exit("Usage: python THM.py [filename] [target clearance rate in %] [maximum board state searches] [print_output]")
 
-    # input error detection
     if len(sys.argv) > 2:
         try:
             int(sys.argv[2])
@@ -593,6 +592,7 @@ if __name__ == '__main__':
         except:
             sys.exit("Print output must be 0, 1 or 2.")
 
+    # variable argument default values
     filename = sys.argv[1] if len(sys.argv) > 1 else "board4"
     target = int(sys.argv[2]) if len(sys.argv) > 2 else 100
     max_states = int(sys.argv[3]) if len(sys.argv) > 3 else 5000
