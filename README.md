@@ -29,7 +29,8 @@ Step 2: Execute THM.py from the command prompt using python.
                 by searching through a maximum of 5000 different board states. Feel free to allow for a longer search, sometimes this 
                 results in a board that's cleared slightly more. The solution is output as a series of .png images
                 
-Step 3: Go through the solution step by step as shown in the images in the "/solution" folder.
+Step 3: Go through the solution step by step as shown in the images in the "/solution" folder. 
+        Here's an example solution of the 4x4 board, board1.csv: https://imgur.com/a/oArHJZr
 
 Step 4: Hopefully enjoy your platinum. It will probably still require a little bit of luck with the positioning of the treasures.
 
