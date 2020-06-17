@@ -39,7 +39,7 @@ Two additional files are included in the project:
 
 GenerateBoard.py: Generates a random initial board of a specified width and height
 
-                  Usage: Usage: python GenerateBoard.py [height], [width]
+                  Usage: Usage: python GenerateBoard.py [height] [width]
       
 Stats.py: Returns the mean, standard deviation, coefficient of variance, min and max of the following parameters:
           percentage of board cleared, number of states explored, number of steps for the best solution, 
