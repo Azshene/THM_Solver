@@ -34,7 +34,7 @@ def GenerateBoard(height, width):
 
 if __name__ == '__main__':
     if len(sys.argv) > 3:
-        sys.exit("Usage: python GenerateBoard.py [height], [width]")
+        sys.exit("Usage: python GenerateBoard.py [height] [width]")
     height = int(sys.argv[1]) if len(sys.argv) > 1 else 11
     width = int(sys.argv[2]) if len(sys.argv) > 2 else 22
 
