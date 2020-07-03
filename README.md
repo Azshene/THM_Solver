@@ -31,8 +31,11 @@ Step 2: Execute THM.py from the command prompt using python.
                 
 Step 3: Go through the solution step by step as shown in the images in the "/solution" folder. 
         Here's an example solution of the 4x4 board, board1.csv: https://imgur.com/a/oArHJZr
+        
+Step 3.5: If you're having difficulty beating the required score by using the solver to simply clear the most amount possible of the board, here's an alternative method: 
+          In principle you can "force" the solver to prioritize clearing certain sections of the board. Whenever you discover a treasure you could type out a new board file               that includes the region you want cleared, or perhaps a small section of the surrounding area. When you find a solution that satisfies you, you follow that solution on           the full 22x11 board. You will then have a new 22x11 board that is partially cleared which you can then input as a new .csv file (0 counts as a cleared board space in           the .csv file) and continue from then on, repeating the process when you discover a new treasure.
 
-Step 4: Hopefully enjoy your platinum. It will probably still require a little bit of luck with the positioning of the treasures.
+Step 4: Hopefully enjoy your platinum. It will probably still require a little bit of luck with the positioning of the treasures, and inputting can be tedious.
 
 
 Two additional files are included in the project:
